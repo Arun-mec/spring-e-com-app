@@ -38,13 +38,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDto createCustomer(CustomerRequest customerRequest) {
-        Customer customer = customerRepository.save(
-                Customer.builder()
-                .firstname(customerRequest.getFirstname())
-                .lastname(customerRequest.getLastname())
-                .email(customerRequest.getEmail())
-                .address(customerRequest.getAddress())
-                .build());
+        Customer customer = customerRepository.save(customerMapper.toCustomer(customerRequest));
         return customerMapper.toCustomerDto(customer);
     }
 

@@ -4,7 +4,9 @@ import com.ecom.customerservice.entity.Customer;
 import com.ecom.customerservice.entity.dto.CustomerDto;
 import com.ecom.customerservice.entity.dto.CustomerRequest;
 import com.ecom.customerservice.entity.dto.CustomerRequestDto;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CustomerMapper {
 
     public CustomerDto toCustomerDto(Customer customer) {
@@ -27,6 +29,15 @@ public class CustomerMapper {
                 .lastname(customerRequestDto.getLastname())
                 .email(customerRequestDto.getEmail())
                 .address(customerRequestDto.getAddress())
+                .build();
+    }
+
+    public Customer toCustomer(CustomerRequest customerRequest) {
+        return  Customer.builder()
+                .firstname(customerRequest.getFirstname())
+                .lastname(customerRequest.getLastname())
+                .email(customerRequest.getEmail())
+                .address(customerRequest.getAddress())
                 .build();
     }
 
